@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { ensureAuthenticated } from "./middlewares/ensureAuthenticated";
+import { CreateListPromoterController } from "./modules/listPromoter/createListPromoter/CreateListPromoterController";
 import { CreatePartyController } from "./modules/party/createParty/CreatePartyController";
 import { DeletePartyController } from "./modules/party/deleteParty/DeletePartyController";
 import { GetPartiesController } from "./modules/party/getParties/GetPartiesController";
@@ -15,6 +16,7 @@ const createPartyController = new CreatePartyController()
 const deletePartyController = new DeletePartyController()
 const getPartiesController = new GetPartiesController()
 const updatePartyController = new UpdatePartyController()
+const createListPromoterController = new CreateListPromoterController()
 
 // User
 routes.post("/user", createUserController.handle)
@@ -26,7 +28,7 @@ routes.delete("/party/:id", ensureAuthenticated, deletePartyController.handle)
 routes.get("/parties", getPartiesController.handle)
 routes.put("/party/:id", ensureAuthenticated, updatePartyController.handle)
 
-
 // ListPromoter
+routes.post("/listPromoter/:id", ensureAuthenticated, createListPromoterController.handle)
 
 export { routes }

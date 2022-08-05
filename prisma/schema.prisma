@@ -33,7 +33,7 @@ model ListPromoters {
   id_party   String
   party      Parties  @relation(fields: [id_party], references: [id])
   name       String
-  cpfGuest   String
+  cpfGuest   String?
   qtdGuest   Int      @default(0)
   created_at DateTime @default(now())
 
