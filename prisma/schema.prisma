@@ -33,9 +33,9 @@ model ListPromoters {
   id_party   String
   party      Parties  @relation(fields: [id_party], references: [id])
   name       String
-  cpfGuest   String?
-  qtdGuest   Int      @default(0)
+  qtdGuest   Int
   created_at DateTime @default(now())
+  guests     String[]
 
   @@map("listpromoters")
 }
